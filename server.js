@@ -103,13 +103,14 @@ app.post("/signin", (req, res) => {
         if (err) {
             res.status(500).send(err);
         } else {
-            const querry2 = "SELECT (co,co2,nox,so2) FROM product_data ORDRED BY id LIMIT 1"
+            const querry2 = "SELECT  co,co2,nox,so2 FROM product_data ORDER BY id LIMIT 1"
             fetch_db(querry2,(error,responce)=>{
                 if (error){
-                    res.status(500).send(err);
+                    res.status(500).send(error);
                 }
                 else{
                     const data=responce[0];
+                    console.log(data)
                     res.render("login_page",{data})
                 }
             })

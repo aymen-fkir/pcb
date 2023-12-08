@@ -11,19 +11,32 @@ section {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   padding: 140px 0;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  display: inline;
+
 }
+
+.row{
+    display: flex;
+    justify-content: space-evenly;
+}
+
 .card {
-  position: relative;
-  max-width: 300px;
-  height: auto;
-  background: linear-gradient(-45deg, #fe0847, #feae3f);
-  border-radius: 15px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  -webkit-box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
+    
+    position: relative;
+    max-width: 300px;
+    height: auto;
+    background: linear-gradient(-45deg, #fe0847, #feae3f);
+    border-radius: 15px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    -webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 .card:hover {
   -webkit-transform: scale(1.1);
@@ -31,16 +44,23 @@ section {
 }
 .col-sm-4:nth-child(1) .card,
 .col-sm-4:nth-child(1) .card .title .fa {
-  background: linear-gradient(-45deg, #f403d1, #64b5f6);
-}
-.col-sm-4:nth-child(2) .card,
-.col-sm-4:nth-child(2) .card .title .fa {
-  background: linear-gradient(-45deg, #ffec61, #f321d7);
+  background: linear-gradient(-45deg, #323232, #ff3c3c);
 }
 .col-sm-4:nth-child(3) .card,
 .col-sm-4:nth-child(3) .card .title .fa {
-  background: linear-gradient(-45deg, #24ff72, #9a4eff);
+  background: linear-gradient(-45deg, #0e0d0d, #d04343);
 }
+.col-sm-4:nth-child(2) .card,
+.col-sm-4:nth-child(2) .card .title .fa {
+  background: linear-gradient(-45deg, #4649f2, #8e1317);
+}
+
+.col-sm-4:nth-child(4) .card,
+.col-sm-4:nth-child(4) .card .title .fa {
+  background: linear-gradient(-45deg, #6c5bd8, rgba(245, 38, 38, 0.885))
+}
+
+
 .card::before {
   content: "";
   position: absolute;
@@ -48,7 +68,6 @@ section {
   left: 0;
   width: 100%;
   height: 40%;
-  background: rgba(255, 255, 255, 0.1);
   z-index: 1;
   -webkit-transform: skewY(-5deg) scale(1.5);
   transform: skewY(-5deg) scale(1.5);
