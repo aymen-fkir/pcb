@@ -1,15 +1,24 @@
--- Create the database
 CREATE DATABASE IF NOT EXISTS pcb;
 
 -- Switch to the database
 USE pcb;
 
+
+-- Create the "products_numbers" table
+CREATE TABLE IF NOT EXISTS products_numbers (
+    refference_number VARCHAR(255) PRIMARY KEY,
+    state VARCHAR(255) NOT NULL,
+    FOREIGN KEY (refference_number) REFERENCES users(refference_number)
+);
+
 -- Create the "users" table
 CREATE TABLE IF NOT EXISTS users (
-    refference_number VARCHAR(255) PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    refference_number VARCHAR(255) ,
     username VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL
+    password VARCHAR(255) NOT NULL,
+    FOREIGN KEY (refference_number) REFERENCES products_numbers(refference_number)
 );
 
 -- Create the "product_data" table
@@ -26,9 +35,6 @@ CREATE TABLE IF NOT EXISTS product_data (
     FOREIGN KEY (refference_number) REFERENCES users(refference_number)
 );
 
--- Create the "products_numbers" table
-CREATE TABLE IF NOT EXISTS products_numbers (
-    refference_number VARCHAR(255) PRIMARY KEY,
-    state VARCHAR(255) NOT NULL,
-    FOREIGN KEY (refference_number) REFERENCES users(refference_number)
-);
+
+
+

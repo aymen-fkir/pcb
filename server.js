@@ -11,6 +11,9 @@ const port = 3000;
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "ejs");
+
 function create_connection(callback) {
     fs.readFile(path.join(__dirname, "connection.json"), 'utf8')
         .then((secret) => {
@@ -88,7 +91,6 @@ app.post("/signup", (req, res) => {
         if (err) {
             res.status(500).send(err);
         } else {
-            console.log("DONE");
             res.send(ress);
         }
     });
@@ -96,13 +98,21 @@ app.post("/signup", (req, res) => {
 
 app.post("/signin", (req, res) => {
     const form = req.body;
-    const querry = "SELECT * FROM users where email = '"+ form.email_signin +"' and password = '"+form.password_signin+"'"; 
-    fetch_db(querry, (err, ress) => {
+    const querry1 = "SELECT * FROM users where email = '"+ form.email_signin +"' and password = '"+form.password_signin+"'"; 
+    fetch_db(querry1, (err, ress) => {
         if (err) {
             res.status(500).send(err);
         } else {
-            console.log("DONE");
-            res.send(ress);
+            const querry2 = "SELECT (co,co2,nox,so2) FROM product_data ORDRED BY id LIMIT 1"
+            fetch_db(querry2,(error,responce)=>{
+                if (error){
+                    res.status(500).send(err);
+                }
+                else{
+                    const data=responce[0];
+                    res.render("login_page",{data})
+                }
+            })
         }
     });
 });
