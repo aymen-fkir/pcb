@@ -1,7 +1,7 @@
-CREATE DATABASE IF NOT EXISTS pcb;
+--CREATE DATABASE IF NOT EXISTS pcb;
 
 -- Switch to the database
-USE pcb;
+--USE pcb;
 
 
 -- Create the "products_numbers" table
