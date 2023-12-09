@@ -70,14 +70,14 @@
   </section>
   <div class="chart">
     <canvas id="myLineChart"></canvas>
-    <% const chart_data = [data.chart.pm1, data.chart.pm2_5, data.chart.pm10]%>
+    
     <script>
       // Sample chart data
       var chartData = {
         labels: ["pm1","pm2_5","pm10"],
         datasets: [{
           label: 'LEVEL',
-          data: chart_data,
+          data: [<%=data.chart.pm1%>, <%=data.chart.pm2_5%>, <%=data.chart.pm10%>],
           borderColor: 'rgba(75, 192, 192, 1)',
           borderWidth: 2,
           fill: false,
