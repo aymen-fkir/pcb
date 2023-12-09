@@ -133,3 +133,14 @@ section {
 .card a:hover {
   text-decoration: none;
 }
+
+.chart{
+  max-width: 900px;
+  height: 500px;
+  margin: 20px auto; /* Center the chart horizontally with some margin */
+  border: 1px solid #ddd; /* Optional border for visual separation */
+  border-radius: 8px; /* Optional border radius for a rounded appearance */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional box shadow for a subtle effect */
+
+}
+
