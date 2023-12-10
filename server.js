@@ -103,7 +103,7 @@ app.post("/signin",async (req, res) => {
                                 res.status(500).send(error3);
                             }
                             else{
-                                const data = {static:results2[0],chart:results3[0]}
+                                const data = {static:results2[0],chart:results3}
                                 res.render("login_page",{data});
                             }
                         })

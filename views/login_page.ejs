@@ -69,15 +69,38 @@
     </div>
   </section>
   <div class="chart">
-    <canvas id="myLineChart"></canvas>
-    
+    <canvas id="myLineChart_pm1"></canvas>
+    <canvas id="myLineChart_pm2_5"></canvas>
+    <canvas id="myLineChart_pm10"></canvas>
     <script>
       // Sample chart data
-      var chartData = {
-        labels: ["pm1","pm2_5","pm10"],
+      var chartData1 = {
+        labels: [11,12,13],
         datasets: [{
-          label: 'LEVEL',
-          data: [<%=data.chart.pm1%>, <%=data.chart.pm2_5%>, <%=data.chart.pm10%>],
+          label: 'PM1',
+          data: [<%=data.chart[0].pm1%>,<%=data.chart[1].pm1%>,<%=data.chart[2].pm1%>],
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 2,
+          fill: false,
+        }]
+      };
+
+      var chartData2 = {
+        labels: [11,12,13],
+        datasets: [{
+          label: 'PM10',
+          data: [<%=data.chart[0].pm10%>,<%=data.chart[1].pm10%>,<%=data.chart[2].pm10%>],
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 2,
+          fill: false,
+        }]
+      };
+
+      var chartData3 = {
+        labels: [11,12,13],
+        datasets: [{
+          label: 'PM2,5',
+          data: [<%=data.chart[0].pm2_5%>,<%=data.chart[1].pm2_5%>,<%=data.chart[2].pm2_5%>],
           borderColor: 'rgba(75, 192, 192, 1)',
           borderWidth: 2,
           fill: false,
@@ -94,14 +117,25 @@
           }
         }
       };
-  
       // Get the canvas context
-      var ctx = document.getElementById('myLineChart').getContext('2d');
+      var ctx1 = document.getElementById('myLineChart_pm1').getContext('2d');
+      var ctx2 = document.getElementById('myLineChart_pm10').getContext('2d');
+      var ctx3 = document.getElementById('myLineChart_pm2_5').getContext('2d');
   
       // Create the line chart
-      var myLineChart = new Chart(ctx, {
+      var myLineChart1 = new Chart(ctx1, {
         type: 'line',
-        data: chartData,
+        data: chartData1,
+        options: chartOptions
+      });
+      var myLineChart2 = new Chart(ctx2, {
+        type: 'line',
+        data: chartData2,
+        options: chartOptions
+      });
+      var myLineChart3 = new Chart(ctx3, {
+        type: 'line',
+        data: chartData3,
         options: chartOptions
       });
     </script>
